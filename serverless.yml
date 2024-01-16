@@ -30,12 +30,12 @@ provider:
 
 functions:
   acknowledgerFunction:
-    handler: dist/acknowledger.handler
+    handler: app/acknowledger.handler
 #    provisionedConcurrency: 1
     events:
       - httpApi: 'POST /slack/events'
   botFunction:
-    handler: dist/bot.handler
+    handler: app/bot.handler
     environment:
       OPENAI_API_KEY: ${env:OPENAI_API_KEY}
     timeout: 300
