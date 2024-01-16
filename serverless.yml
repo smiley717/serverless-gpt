@@ -41,6 +41,10 @@ functions:
     environment:
       OPENAI_API_KEY: ${env:OPENAI_API_KEY}
     timeout: 300
+
+plugins:
+  - serverless-offline
+
 resources:
   Resources:
     conversationsTable:
