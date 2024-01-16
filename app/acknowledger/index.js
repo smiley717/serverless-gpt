@@ -76,6 +76,16 @@ app.message(async ({ message, context }) => {
 });
 
 module.exports.handler = async (event, context, callback) => {
+  const body = event.isBase64Encoded ? atob(event.body) : event.body;
+  const bodyJson = JSON.parse(body);
+
+  if (bodyJson.challenge) {
+    return {
+      statusCode: 200,
+      body: bodyJson.challenge,
+      isBase64Encoded: false,
+    };
+  }
   const handler = await awsLambdaReceiver.start();
   return handler(event, context, callback);
 };
