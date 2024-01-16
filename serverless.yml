@@ -33,7 +33,7 @@ functions:
     handler: app/acknowledger.handler
 #    provisionedConcurrency: 1
     events:
-      - http:
+      - httpApi:
           path: /slack/events
           method: post
   botFunction:
