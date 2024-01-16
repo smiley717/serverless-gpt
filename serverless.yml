@@ -2,7 +2,7 @@ service: gptbot
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs18.x
   stage: ${opt:stage, 'dev'}
   region: us-east-1
   environment:
@@ -31,7 +31,7 @@ provider:
 functions:
   acknowledgerFunction:
     handler: dist/acknowledger.handler
-    provisionedConcurrency: 1
+#    provisionedConcurrency: 1
     events:
       - httpApi: 'POST /slack/events'
   botFunction:

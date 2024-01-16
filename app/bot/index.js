@@ -89,6 +89,17 @@ async function handleNewMessage({ channel, userMessage, botUserId, subtype }) {
 }
 
 module.exports.handler = async (event) => {
+  const body = event.isBase64Encoded ? atob(event.body) : event.body;
+  const bodyJson = JSON.parse(body);
+
+  if (bodyJson.challenge) {
+    return {
+      statusCode: 200,
+      body: bodyJson.challenge,
+      isBase64Encoded: false,
+    };
+  }
+
   await handleNewMessage(event);
 
   return {
