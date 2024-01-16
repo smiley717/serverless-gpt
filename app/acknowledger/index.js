@@ -13,6 +13,7 @@ const awsLambdaReceiver = new AwsLambdaReceiver({
 const app = new App({
   token: SLACK_BOT_TOKEN,
   receiver: awsLambdaReceiver,
+  logLevel: "debug",
 });
 
 const validModels = ["gpt-3.5-turbo", "gpt-4"];
