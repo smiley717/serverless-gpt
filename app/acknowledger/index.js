@@ -95,9 +95,6 @@ module.exports.handler = async (event, context, callback) => {
       throw error;
     }
   }
-
-  console.log(SLACK_SIGNING_SECRET, SLACK_BOT_TOKEN);
-
   const handler = await awsLambdaReceiver.start();
   return handler(event, context, callback);
 };
