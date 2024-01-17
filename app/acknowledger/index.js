@@ -78,23 +78,6 @@ app.message(async ({ message, context }) => {
 
 module.exports.handler = async (event, context, callback) => {
   console.log("acknowledge event", event);
-  const bodyContent = event.isBase64Encoded ? atob(event.body) : event.body;
-
-  if (typeof bodyContent === "string" && bodyContent.includes("challenge")) {
-    try {
-      const bodyJson = JSON.parse(bodyContent);
-      if (bodyJson.challenge) {
-        return {
-          statusCode: 200,
-          body: bodyJson.challenge,
-          isBase64Encoded: false,
-        };
-      }
-    } catch (error) {
-      console.error("Error parsing body: ", error, bodyContent);
-      throw error;
-    }
-  }
   const handler = await awsLambdaReceiver.start();
   return handler(event, context, callback);
 };
