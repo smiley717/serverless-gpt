@@ -35,7 +35,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "@slack/bolt": "^3.12.2",
+    "@slack/bolt": "^3.17.1",
     "aws-sdk": "^2.1354.0",
     "openai": "^3.2.1"
   }
